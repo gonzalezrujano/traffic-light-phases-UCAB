@@ -1,1 +1,1 @@
-# traffic-light-phases-UCAB
+# Traffic light phases :vertical_traffic_light: (UCAB Project)
