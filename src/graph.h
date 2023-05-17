@@ -21,11 +21,20 @@ typedef struct graphlist {
 	struct graphlist *next;
 } Graphlist;
 
-void print_vertex_debug(Graph *G) {
+void print_vertex_graph(Graph *G) {
     Vertex *p = G->V;
 	while (p != NULL) {
 		printf("%s", p->name);
 		if (p->next != NULL) printf(", ");
+		p = p->next;
+	}
+	printf("\n");
+}
+
+void print_edge_graph(Graph *G) {
+	Edge *p = G->E;
+	while (p != NULL) {
+		printf("%s - %s\n", p->v1, p->v2);
 		p = p->next;
 	}
 	printf("\n");
@@ -163,7 +172,7 @@ void print_graphlist(Graphlist *GL) {
 	while (p != NULL && p->G != NULL) {
 		printf("color%d", p->G->color);
 		printf("         ");
-		print_vertex_debug(p->G);
+		print_vertex_graph(p->G);
 		p = p->next;
 	}
 }

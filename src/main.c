@@ -38,8 +38,17 @@ int main(int argc, char const *argv[]) {
 	if (argc == 1) fprintf(stderr, "traffic <filename>\n");
 	const char *filename = argv[1];
 	printf("Starting process for: %s\n", filename);
+	printf("\n");
 
     Graph *G = read_input_from_file(filename);
+
+    printf("Graph vertex(s) (Giros):\n");
+    print_vertex_graph(G);
+    printf("\n");
+
+    printf("Graph edge(s) (Giros incompatibles):\n");
+    print_edge_graph(G);
+    printf("\n");
 
     /* Start algorithm process */
     int i = 0;
