@@ -42,8 +42,10 @@ void print_edge_graph(Graph *G) {
 
 Graph *create_graph(void) {
 	Graph *G = (Graph*) malloc(sizeof(Graph));
-	// if ((G = (Graph*) malloc(sizeof(Graph))) == NULL)
-	// 	print_stderr("create_graph: malloc error");
+	if (G == NULL) {
+		fprintf(stderr, "create_graph: malloc error\n");
+		exit(1);
+	}
 	return G;
 }
 
@@ -72,8 +74,10 @@ int len_edge_graph(Graph *G) {
 Vertex *new_vertex(char *name) {
 	Vertex *ver;
 	ver = (Vertex*) malloc(sizeof(Vertex));
-	// if ((ver = (Vertex*) malloc(sizeof(Vertex))) == NULL)
-	// 	print_stderr("new_vertex: malloc error");
+	if (ver == NULL) {
+		fprintf(stderr, "new_vertex: malloc error\n");
+		exit(1);
+	}
 	ver->name = name;
 	ver->is_colored = 0;
 	ver->next = NULL;
@@ -84,8 +88,10 @@ Vertex *new_vertex(char *name) {
 Edge *new_edge(char *v1, char *v2) {
 	Edge *edge;
 	edge = (Edge*) malloc(sizeof(Edge));
-	// if ((ver = (Vertex*) malloc(sizeof(Vertex))) == NULL)
-	// 	print_stderr("new_vertex: malloc error");
+	if (edge == NULL) {
+		fprintf(stderr, "new_edge: malloc error\n");
+		exit(1);
+	}
 	edge->v1 = v1;
 	edge->v2 = v2;
 	edge->next = NULL;
@@ -94,8 +100,10 @@ Edge *new_edge(char *v1, char *v2) {
 }
 
 void add_vertex_to_graph(Graph *G, Vertex *new_vertex) {
-	// if (G == NULL)
-	// 	print_stderr("add_vertex_to_graph: G is NULL");
+	if (G == NULL) {
+		fprintf(stderr, "add_vertex_to_graph: G is NULL\n");
+		exit(1);
+	}
 	new_vertex->next = NULL;
 
 	if (G->V == NULL) { // Graph empty
@@ -114,8 +122,10 @@ void add_vertex_to_graph(Graph *G, Vertex *new_vertex) {
 }
 
 void add_edge_to_graph(Graph *G, Edge *new_edge) {
-	// if (G == NULL)
-	// 	print_stderr("add_vertex_to_graph: G is NULL");
+	if (G == NULL) {
+		fprintf(stderr, "add_edge_to_graph: G is NULL\n");
+		exit(1);
+	}
 	new_edge->next = NULL;
 
 	if (G->E == NULL) { // Graph empty
@@ -143,6 +153,10 @@ void append_to_graphlist(Graphlist *GL, Graph *nw_graph) {
 	while (1) {
 		if (p->next == NULL) {
 			Graphlist *nw_grlst = (Graphlist*) malloc(sizeof(Graphlist));
+			if (nw_grlst == NULL) {
+				fprintf(stderr, "append_to_graphlist: malloc error\n");
+				exit(1);
+			}
 			nw_grlst->G = nw_graph;
 			p->next = nw_grlst;
 			break;
@@ -179,6 +193,10 @@ void print_graphlist(Graphlist *GL) {
 
 Vertex *clone_vertex(Vertex *src) {
 	Vertex *dest = (Vertex*) malloc(sizeof(Vertex));
+	if (dest == NULL) {
+		fprintf(stderr, "clone_vertex: malloc error\n");
+		exit(1);
+	}
 	dest->name = src->name;
 	dest->is_colored = src->is_colored;
 	dest->next = src->next;

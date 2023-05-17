@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include "graph.h"
-#include "utils.h"
 #include "input.h"
 
 void avid(Graph *G, Graph *new_color) {

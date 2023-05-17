@@ -1,4 +1,11 @@
 # Traffic light phases :vertical_traffic_light: (UCAB Project)
 
-TODO: Hacer NULL apuntador al nombre del nuevo vertice
-TODO: printf("%d\n", (getc(fp) == EOF)); -> a_to_edges
+TODO: getc(fp) == EOF) -> a_to_edges
+
+TODO: Optimizar a_to_vertex from extract_edges
+
+TODO: Optimizar enfoque avido
+
+TODO: Agregar pruebas automaticas
+
+TODO: Solventar Warning ./input.h:60:24: warning: expression result unused [-Wunused-value]
