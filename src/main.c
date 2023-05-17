@@ -37,21 +37,10 @@ void avid(Graph *G, Graph *new_color) {
 
 int main(int argc, char const *argv[]) {
 	/* Start input process */
-    Graph *Z = read_input_from_file("case.dat");
-    printf("%d\n", len_vertex_graph(Z));
-    print_vertex_debug(Z);
-    // Case 1
-    return 0;
-    Graph *G = create_graph();
-    Vertex *v = new_vertex("AB");
-    Vertex *w = new_vertex("AC");
-    add_vertex_to_graph(G, v);
-    add_vertex_to_graph(G, w);
-    add_edge_to_graph(G, new_edge("AB", "AC"));
-
-    printf("%d\n", len_vertex_graph(G));
-    printf("%d\n", len_edge_graph(G));
-
+    Graph *G = read_input_from_file("case.dat");
+    printf("len_vertex_graph %d\n", len_vertex_graph(G));
+    printf("len_edge_graph %d\n", len_edge_graph(G));
+    print_vertex_debug(G);
     /* End input process */
 
     /* Start algorith process */

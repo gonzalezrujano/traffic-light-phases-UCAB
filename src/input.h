@@ -42,13 +42,39 @@ void a_to_vertex(Graph *G, char *format) {
 	}
 }
 
+void extract_edges(Graph *G, char *s) {
+	int i = 0;
+	int j = 0;
+	char c, *word, *new_word, *v1, *v2;
+	v1 = v2 = NULL;
+	word = (char*) malloc(MAXLINE);
+
+	while ((c = *(word + j) = *s++) != '\0' && i++ < MAXLINE-1) {
+		if (!isalnum(c)) {
+			*(word + j) = '\0';
+			j = 0;
+			new_word = malloc(strlen(word) + 1);
+			strcpy(new_word, word);
+			if (v1 == NULL) {
+				v1 = new_word;
+				for (;!isalnum(*s);*s++) ;
+			} else 
+		        v2 = new_word;
+		    continue;
+		}
+		j++;
+	}
+
+	add_edge_to_graph(G, new_edge(v1, v2));
+}
+
 void a_to_edges(Graph *G, FILE *fp) {
 	char *result = readline(fp);
 	int i = 0;
 	int limit = 2 * len_vertex_graph(G);
 
 	while (result[0] != '.' && i < limit) {
-		printf("%s\n", result);
+		extract_edges(G, result);
 		result = readline(fp);
 		i++;
 	}
