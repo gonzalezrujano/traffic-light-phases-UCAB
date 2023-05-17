@@ -3,12 +3,7 @@
 #include <string.h>
 #include "graph.h"
 #include "utils.h"
-
-/*
-Case 1:
-2 vertex AB AC
-1 edge   AB - AC
-*/
+#include "input.h"
 
 void avid(Graph *G, Graph *new_color) {
 	int founded;
@@ -42,8 +37,11 @@ void avid(Graph *G, Graph *new_color) {
 
 int main(int argc, char const *argv[]) {
 	/* Start input process */
-    // Graph *G = read_input_from_file("case.dat");
+    Graph *Z = read_input_from_file("case.dat");
+    printf("%d\n", len_vertex_graph(Z));
+    print_vertex_debug(Z);
     // Case 1
+    return 0;
     Graph *G = create_graph();
     Vertex *v = new_vertex("AB");
     Vertex *w = new_vertex("AC");

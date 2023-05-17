@@ -1,5 +1,3 @@
-
-
 typedef struct vertex {
 	char *name;
 	int *is_colored;
@@ -148,7 +146,7 @@ int len_graphlist(Graphlist *GL) {
 void print_graphlist(Graphlist *GL) {
 	Graphlist *p = GL;
 	while (p != NULL && p->G != NULL) { 
-		printf("color%d\n", p->G->color);
+		printf("color%d\n", *(p->G->color));
 		p = p->next;
 	}
 }
