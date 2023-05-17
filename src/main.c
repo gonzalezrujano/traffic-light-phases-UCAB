@@ -11,7 +11,6 @@ void avid(Graph *G, Graph *new_color) {
 
     v = G->V;
 	while (v != NULL) {
-		//printf("Ite:%s\n", v->name);
 		if (v->is_colored) { // Ignore colored vertex
 			v = v->next;
 			continue;
@@ -20,14 +19,12 @@ void avid(Graph *G, Graph *new_color) {
 		w = new_color->V;
 		while (w != NULL) {
 			if (its_connected_vertex(G, v, w)) {
-				// printf("Vertices: %s y %s conectados\n", v->name, w->name);
 				founded = 1;
 				break;
 			}
 			w = w->next;
 		}
 		if (!founded) {
-			// printf("Agregar: %s a new_color\n", v->name);
 			v->is_colored = (int*) 1;
 		    add_vertex_to_graph(new_color, clone_vertex(v));
 		}
@@ -36,24 +33,23 @@ void avid(Graph *G, Graph *new_color) {
 }
 
 int main(int argc, char const *argv[]) {
-	/* Start input process */
-    Graph *G = read_input_from_file("case.dat");
-    printf("len_vertex_graph %d\n", len_vertex_graph(G));
-    printf("len_edge_graph %d\n", len_edge_graph(G));
-    print_vertex_debug(G);
-    /* End input process */
 
-    /* Start algorith process */
+	/* Start input process */
+	if (argc == 1) fprintf(stderr, "traffic <filename>\n");
+	const char *filename = argv[1];
+	printf("Starting process for: %s\n", filename);
+
+    Graph *G = read_input_from_file(filename);
+
+    /* Start algorithm process */
     int i = 0;
     Graphlist *GL = (Graphlist*) malloc(sizeof(Graphlist));
-    printf("len_graphlist: %d\n", len_graphlist(GL));
     while (!is_graph_colored(G)) {
     	Graph *phase = create_graph();
-	    phase->color = (int*)(++i);
+	    phase->color = ++i;
 	    avid(G, phase);
 	    append_to_graphlist(GL, phase);
     }
-    printf("len_graphlist: %d\n", len_graphlist(GL));
     print_graphlist(GL);
 
 	return 0;

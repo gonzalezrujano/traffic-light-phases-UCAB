@@ -80,11 +80,12 @@ void a_to_edges(Graph *G, FILE *fp) {
 	}
 }
 
-Graph *read_input_from_file(char *filename) {
+Graph *read_input_from_file(const char *filename) {
 	Graph *G = create_graph();
 	FILE  *fp;
 	char *result;
 
+    // Open case file
 	if ((fp = fopen(filename, "r")) == NULL) {
 		fprintf(stderr, "read_input_from_file: fopen error\n");
 		exit(1);

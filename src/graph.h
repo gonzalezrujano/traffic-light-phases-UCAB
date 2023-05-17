@@ -13,13 +13,23 @@ typedef struct edge {
 typedef struct graph {
 	struct vertex *V;
 	struct edge *E;
-	int *color;
+	int color;
 } Graph;
 
 typedef struct graphlist {
 	struct graph *G;
 	struct graphlist *next;
 } Graphlist;
+
+void print_vertex_debug(Graph *G) {
+    Vertex *p = G->V;
+	while (p != NULL) {
+		printf("%s", p->name);
+		if (p->next != NULL) printf(", ");
+		p = p->next;
+	}
+	printf("\n");
+}
 
 Graph *create_graph(void) {
 	Graph *G = (Graph*) malloc(sizeof(Graph));
@@ -144,9 +154,16 @@ int len_graphlist(Graphlist *GL) {
 }
 
 void print_graphlist(Graphlist *GL) {
+	printf("----------------------------------------\n");
+	printf("Color");
+	printf("%15s\n", "Giros");
+	printf("----------------------------------------\n");
+
 	Graphlist *p = GL;
-	while (p != NULL && p->G != NULL) { 
-		printf("color%d\n", *(p->G->color));
+	while (p != NULL && p->G != NULL) {
+		printf("color%d", p->G->color);
+		printf("         ");
+		print_vertex_debug(p->G);
 		p = p->next;
 	}
 }
@@ -158,14 +175,6 @@ Vertex *clone_vertex(Vertex *src) {
 	dest->next = src->next;
 
 	return dest;
-}
-
-void print_vertex_debug(Graph *G) {
-    Vertex *p = G->V;
-	while (p != NULL) {
-		printf("%s\n", p->name);
-		p = p->next;
-	}
 }
 
 int is_graph_colored(Graph *G) {
