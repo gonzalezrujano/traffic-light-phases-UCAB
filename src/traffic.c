@@ -36,6 +36,8 @@ int main(int argc, char const *argv[]) {
 	/* Start input process */
 	if (argc == 1) fprintf(stderr, "traffic <filename>\n");
 	const char *filename = argv[1];
+	printf("\n");
+	printf("\n");
 	printf("Starting process for: %s\n", filename);
 	printf("\n");
 
@@ -52,6 +54,8 @@ int main(int argc, char const *argv[]) {
     /* Start algorithm process */
     int i = 0;
     Graphlist *GL = (Graphlist*) malloc(sizeof(Graphlist));
+    GL->G = NULL;
+    GL->next = NULL;
     while (!is_graph_colored(G)) {
     	Graph *phase = create_graph();
 	    phase->color = ++i;

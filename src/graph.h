@@ -46,6 +46,8 @@ Graph *create_graph(void) {
 		fprintf(stderr, "create_graph: malloc error\n");
 		exit(1);
 	}
+	G->V = NULL;
+	G->E = NULL;
 	return G;
 }
 
@@ -158,6 +160,7 @@ void append_to_graphlist(Graphlist *GL, Graph *nw_graph) {
 				exit(1);
 			}
 			nw_grlst->G = nw_graph;
+			nw_grlst->next = NULL;
 			p->next = nw_grlst;
 			break;
 		}
