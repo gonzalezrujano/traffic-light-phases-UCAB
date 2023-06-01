@@ -73,7 +73,7 @@ void a_to_edges(Graph *G, FILE *fp) {
 	int i = 0;
 	int limit = len_vertex_graph(G) - 1;
 
-	while ((*result != '\0') && (result[0] != '.' && i < limit)) {
+	while ((*result != '\0') && (result[0] != '.')) {
 		extract_edges(G, result);
 		result = readline(fp);
 		i++;
